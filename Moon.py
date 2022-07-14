@@ -23,10 +23,21 @@ def Combination(Length=int,Rand=False,lst=None):
     """
     if Rand==False:
         s = ""
+        if s != "":
+            pass
+        else:
+            SelectedEmoji = SelectEmoji(lst)
+        for i in range(Length):
+            s += f"{SelectedEmoji}"
+        pyperclip.copy(s)
+
+    elif Rand ==None:
+        s = ""
         SelectedEmoji = SelectEmoji(lst)
         for i in range(Length):
             s += f"{SelectedEmoji}"
         pyperclip.copy(s)
+
     else:
         s = ""
         for i in range(Length):
@@ -83,13 +94,18 @@ if __name__ == "__main__":
             """
 
             s = """
-                \n\nPress 0 to Use the same in line
+                \n\nPress 0 to Use the same emoji in line
                 \nPress 1 to use Random emoji in line
+                \nPress 2 to use same emoji in line but diffrent emoji on the 2nd line
             """
             print(s)
             try:
-                Rand = bool(input("Type 0 or 1 respectivly : "))
-                return Rand
+
+                Rand = int(input("Type 0,1 or 2 respectivly : "))
+                if Rand ==0:
+                    return False
+                elif Rand == 1:
+                    return True
             except:
                 return False
 
